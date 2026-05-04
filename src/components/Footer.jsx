@@ -21,8 +21,8 @@ const Footer = () => {
         {/* Top Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3">
           {/* Brand */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-2">
+          <div className="space-y-4 flex flex-col mb-5 md:mb-0 items-center md:items-start">
+            <div className="flex items-center gap-2 justify-center">
               <Image
                 src="/logo.png"
                 alt="pixgen logo"
@@ -35,40 +35,30 @@ const Footer = () => {
               </h2>
             </div>
 
-            <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 max-w-xs">
+            <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 max-w-xs text-center md:text-left">
               A Qurbani Hat is a temporary livestock market held during Eid al-Adha for buying and selling animals for sacrifice.
 It serves as both a marketplace and a significant religious and social gathering.
             </p>
           </div>
 
           {/* Company */}
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center text-center">
             <h3 className="text-sm font-semibold text-black dark:text-white mb-4">
-              Company
+              Contact info
             </h3>
             <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
-              <li>
-                <Link
-                  href="/about"
-                  className="hover:text-black dark:hover:text-white transition"
-                >
-                  About
-                </Link>
+              <li>                
+                  support@qurbanihat.com                
               </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="hover:text-black dark:hover:text-white transition"
-                >
-                  Contact
-                </Link>
+              <li>                
+                  +889666001122                
               </li>
              
             </ul>
           </div>
 
           {/* CTA Block */}
-          <div className="space-y-4 flex items-end flex-col">
+          <div className="space-y-4 flex items-center mt-5 md:mt-0 md:items-end flex-col text-center">
             <h3 className="text-sm font-semibold text-black dark:text-white">
               Social Links
             </h3>
