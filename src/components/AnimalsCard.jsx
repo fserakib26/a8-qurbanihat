@@ -16,11 +16,11 @@ const AnimalsCard = ({animal}) => {
                 {animal.price}
               </p>
 
-              <Link href={"/animals"}>
-                <button className="mt-4 w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">
+              
+                <button className="mt-4 w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">                  
                   View Details
                 </button>
-              </Link>
+              
 
               
             </div>
