@@ -15,9 +15,14 @@ const AnimalsCard = ({animal}) => {
               <p className="text-green-600 font-bold mt-2">
                 {animal.price}
               </p>
-              <button className="mt-4 w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">
-                View Details
-              </button>
+
+              <Link href={"/animals"}>
+                <button className="mt-4 w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">
+                  View Details
+                </button>
+              </Link>
+
+              
             </div>
             
           </div>
