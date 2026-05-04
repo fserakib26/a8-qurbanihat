@@ -17,22 +17,30 @@ const BookingForm = ({ animal }) => {
     address: ""
   });
 
- //Ekhane login check kora hosche
+  // ✅ UPDATED LOGIN CHECK (improved)
   useEffect(() => {
     const user = localStorage.getItem("user");
-    setIsLoggedIn(!!user);
+
+    if (user) {
+      try {
+        const parsedUser = JSON.parse(user);
+        if (parsedUser?.email) {
+          setIsLoggedIn(true);
+        }
+      } catch (error) {
+        setIsLoggedIn(false);
+      }
+    }
   }, []);
 
- 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-//   booking submit
+  // booking submit
   const handleSubmit = (e) => {
     e.preventDefault();
 
-   
     if (!isLoggedIn) {
       toast.error("Please login first");
 
@@ -43,10 +51,8 @@ const BookingForm = ({ animal }) => {
       return;
     }
 
-    
     toast.success("Booking successful");
 
-   
     setForm({
       name: "",
       email: "",
@@ -59,7 +65,6 @@ const BookingForm = ({ animal }) => {
 
   return (
     <div className="mt-6">
-     
       <button
         onClick={() => {
           if (!isLoggedIn) {
@@ -126,7 +131,6 @@ const BookingForm = ({ animal }) => {
           </button>
         </form>
       )}
-
     </div>
   );
 };
