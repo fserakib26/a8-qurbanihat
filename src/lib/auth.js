@@ -12,4 +12,10 @@ export const auth = betterAuth({
   emailAndPassword: { 
     enabled: true, 
   },
+  socialProviders: {
+        google: { 
+            clientId: "647580771310-ffkpj7jir8ba1duag7uteoubmsdvgip8.apps.googleusercontent.com",
+            clientSecret: "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"
+        }, 
+    }
 });
