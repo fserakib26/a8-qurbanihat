@@ -3,7 +3,7 @@ import BookingForm from "./BookingForm";
 
 const AnimalDetailsPage = async ({params}) => {
     // ID Received from URL
-    const {id} = await params;
+    const { id } = await params;
     // API Called
     const res = await fetch('https://a8-qurbanihat.vercel.app/data.json')
     const animals = await res.json()

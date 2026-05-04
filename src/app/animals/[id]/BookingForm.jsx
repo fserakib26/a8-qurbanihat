@@ -1,5 +1,6 @@
 "use client";
 
+import { toast } from "react-hot-toast";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
@@ -8,7 +9,6 @@ const BookingForm = ({ animal }) => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showForm, setShowForm] = useState(false);
-  const [message, setMessage] = useState("");
 
   const [form, setForm] = useState({
     name: "",
@@ -17,26 +17,36 @@ const BookingForm = ({ animal }) => {
     address: ""
   });
 
+ //Ekhane login check kora hosche
   useEffect(() => {
     const user = localStorage.getItem("user");
     setIsLoggedIn(!!user);
   }, []);
 
+ 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+//   booking submit
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    
+   
     if (!isLoggedIn) {
-      router.push("/signin"); 
+      toast.error("Please login first");
+
+      setTimeout(() => {
+        router.push("/signin");
+      }, 1200);
+
       return;
     }
 
-    setMessage("Booking successful!");
+    
+    toast.success("Booking successful");
 
+   
     setForm({
       name: "",
       email: "",
@@ -49,13 +59,19 @@ const BookingForm = ({ animal }) => {
 
   return (
     <div className="mt-6">
-
+     
       <button
         onClick={() => {
           if (!isLoggedIn) {
-            router.push("/signin");
+            toast.error("Login required");
+
+            setTimeout(() => {
+              router.push("/signin");
+            }, 1200);
+
             return;
           }
+
           setShowForm(true);
         }}
         className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700"
@@ -64,14 +80,16 @@ const BookingForm = ({ animal }) => {
       </button>
 
       {showForm && (
-        <form onSubmit={handleSubmit} className="mt-4 space-y-3 border p-4 rounded">
-          
+        <form
+          onSubmit={handleSubmit}
+          className="mt-4 space-y-3 border p-4 rounded-lg"
+        >
           <input
             name="name"
             placeholder="Your Name"
             value={form.name}
             onChange={handleChange}
-            className="w-full border p-2"
+            className="w-full border p-2 rounded"
             required
           />
 
@@ -81,7 +99,7 @@ const BookingForm = ({ animal }) => {
             placeholder="Email"
             value={form.email}
             onChange={handleChange}
-            className="w-full border p-2"
+            className="w-full border p-2 rounded"
             required
           />
 
@@ -90,7 +108,7 @@ const BookingForm = ({ animal }) => {
             placeholder="Phone"
             value={form.phone}
             onChange={handleChange}
-            className="w-full border p-2"
+            className="w-full border p-2 rounded"
             required
           />
 
@@ -99,21 +117,16 @@ const BookingForm = ({ animal }) => {
             placeholder="Address"
             value={form.address}
             onChange={handleChange}
-            className="w-full border p-2"
+            className="w-full border p-2 rounded"
             required
           />
 
-          <button className="bg-blue-600 text-white px-4 py-2 rounded">
+          <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
             Confirm Booking
           </button>
         </form>
       )}
 
-      {message && (
-        <div className="fixed top-5 right-5 bg-black text-white px-4 py-2 rounded shadow">
-          {message}
-        </div>
-      )}
     </div>
   );
 };
