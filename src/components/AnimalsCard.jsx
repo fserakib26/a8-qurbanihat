@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from "next/link";
 
 const AnimalsCard = ({animal}) => {
   return (
@@ -17,9 +18,17 @@ const AnimalsCard = ({animal}) => {
               </p>
 
               
-                <button className="mt-4 w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">                  
-                  View Details
+              animals
+              
+              <div>
+                <Link href={`/animals/${animal.id}`}>
+              <button className="mt-4 w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">                  
+                View Details
                 </button>
+              </Link>
+              </div>
+              
+              
               
 
               
